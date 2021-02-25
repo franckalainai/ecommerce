@@ -6,6 +6,7 @@ use App\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
@@ -49,5 +50,14 @@ class AdminController extends Controller
     public function settings(){
         $adminDetails = Admin::where('email', Auth::guard('admin')->user()->email)->first();
         return view('admin.settings')->with(compact('adminDetails', $adminDetails));
+    }
+
+    public function checkCurrentPassword(Request $request){
+        $data = $request->all();
+        if(Hash::check($data['current_pwd'], Auth::guard('admin')->user()->password)){
+            echo "true";
+        }else{
+            echo "false";
+        }
     }
 }
