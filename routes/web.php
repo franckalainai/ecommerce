@@ -31,6 +31,8 @@ Route::prefix('/admin')->namespace('Admin')->group(function(){
         Route::get('settings', 'AdminController@settings')->name('settings');
         Route::get('logout', 'AdminController@logout')->name('logout');
         Route::post('check-current-pwd', 'AdminController@checkCurrentPassword');
+        Route::post('update-current-pwd', 'AdminController@updateCurrentPassword');
+        Route::match(['get', 'post'], 'update-admin-details', 'AdminController@updateAdminDetails')->name('details');
 
     });
 });
