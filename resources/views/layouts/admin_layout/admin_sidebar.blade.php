@@ -24,15 +24,25 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ route('dashboard') }}" class="nav-link">
+              @if(Session::get('page')=="dashboard")
+                <?php $active = "active"; ?>
+              @else
+                <?php $active = ""; ?>
+              @endif
+            <a href="{{ route('dashboard') }}" class="nav-link {{ $active }}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                 AdminPanel
                 </p>
             </a>
           </li>
+          @if(Session::get('page')=="settings" || Session::get('page')=="update-admin-details" )
+            <?php $active = "active"; ?>
+            @else
+            <?php $active = ""; ?>
+          @endif
           <li class="nav-item has-treeview menu-open">
-            <a href="{{ route('dashboard') }}" class="nav-link active">
+            <a href="{{ route('dashboard') }}" class="nav-link {{ $active }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Paramètres
@@ -40,17 +50,26 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-
+                @if(Session::get('page')=="settings")
+                <?php $active = "active"; ?>
+                @else
+                <?php $active = ""; ?>
+              @endif
               <li class="nav-item">
-                <a href="{{ route('details') }}" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Modifier infos Admin</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ url('admin/settings')}}" class="nav-link">
+                <a href="{{ url('admin/settings') }}" class="nav-link {{ $active }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Modifier pass Admin</p>
+                </a>
+              </li>
+              @if(Session::get('page')=="update-admin-details")
+                <?php $active = "active"; ?>
+                @else
+                <?php $active = ""; ?>
+              @endif
+              <li class="nav-item">
+                <a href="{{ url('admin/update-admin-details')}}" class="nav-link {{ $active }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Modifier infos Admin</p>
                 </a>
               </li>
             </ul>
