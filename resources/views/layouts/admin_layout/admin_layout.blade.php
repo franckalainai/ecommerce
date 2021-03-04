@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css'">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="{{ asset('plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
+  <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css')}}">
   <!-- iCheck -->
   <link rel="stylesheet" href="{{ asset('plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
   <!-- JQVMap -->
@@ -100,11 +101,19 @@
 
 <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js')}}"></script>
 <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('plugins/select2/js/select2.full.min.js')}}"></script>
+<script>
+      $('.select2').select2();
+</script>
 <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
 <script>
     $(function () {
       $("#sections").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
+      $("#categories").DataTable({
         "responsive": true,
         "autoWidth": false,
       });
