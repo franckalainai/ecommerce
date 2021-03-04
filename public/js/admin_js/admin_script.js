@@ -36,4 +36,23 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(".updateCategoryStatus").click(function(){
+        var status = $(this).text();
+        var category_id = $(this).attr("category_id");
+        $.ajax({
+            type:'post',
+            url:'/admin/update-category-status',
+            data:{status:status, category_id:category_id},
+            success:function(resp){
+                if(resp['status'] == 0){
+                    $("#category-"+category_id).html("<a class='updateCategoryStatus' href='javascript:void(O)'>Inactive</a>");
+                }else if(resp['status'] == 1){
+                    $("#category-"+category_id).html("<a class='updateCategoryStatus' href='javascript:void(O)'>Active</a>");
+                }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
 });
