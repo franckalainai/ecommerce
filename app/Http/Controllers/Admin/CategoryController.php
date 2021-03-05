@@ -35,11 +35,25 @@ class CategoryController extends Controller
     public function addEditCategory(Request $request, $id=null){
         if($id == null){
             $title = "Add Category";
-            // Add Category Functionality
+            // Add New Category Functionality
             $category = new Category;
+            $categoryData = array();
+            $getCategories = array();
+            $message = "categorie crée avec succès";
         }else{
             $title = "Edit Category";
             // Edit Category Functionality
+            $categoryData = Category::where('id', $id)->first();
+            $getCategories = Category::with('subcategories')->where(['parent_id' => 0, 'section_id' => $categoryData['section_id']])->get();
+
+            // find a category to update
+            $category = Category::find($id);
+            $message = "categorie modifiée avec succès";
+
+            //$getCategories = json_decode($getCategories);
+            //dd($getCategories);
+            //$categoryData = json_decode($categoryData);
+            //dd($categoryData);
         }
 
         if($request->isMethod('post')){
@@ -110,13 +124,13 @@ class CategoryController extends Controller
             //dd($data);
             $category->save();
 
-            Session::flash('success_message', 'categorie crée avec succès');
+            Session::flash('success_message', $message);
             return redirect('admin/categories');
         }
 
         // Get all sections
         $getSections = Section::get();
-        return view('admin.categories.add_edit_category')->with(compact('title', 'getSections'));
+        return view('admin.categories.add_edit_category')->with(compact('title','getCategories', 'categoryData', 'getSections'));
     }
 
     public function appendCategoryLevel(Request $request){

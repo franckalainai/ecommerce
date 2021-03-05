@@ -50,6 +50,7 @@
                     <th>Section</th>
                     <th>URL</th>
                     <th>Status</th>
+                    <th>Actions</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -85,6 +86,7 @@
                             </a>
                         @endif
                     </td>
+                    <td><a href="{{ url('admin/add-edit-category/'.$category->id) }}">Edit</a></td>
                   </tr>
                   @endforeach
                   </tbody>
