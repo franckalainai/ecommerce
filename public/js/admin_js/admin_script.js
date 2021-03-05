@@ -18,6 +18,7 @@ $(document).ready(function(){
         });
     });
 
+    // Update Section Status
     $(".updateSectionStatus").click(function(){
         var status = $(this).text();
         var section_id = $(this).attr("section_id");
@@ -37,6 +38,7 @@ $(document).ready(function(){
         });
     });
 
+    // Update Category Status
     $(".updateCategoryStatus").click(function(){
         var status = $(this).text();
         var category_id = $(this).attr("category_id");
@@ -50,6 +52,21 @@ $(document).ready(function(){
                 }else if(resp['status'] == 1){
                     $("#category-"+category_id).html("<a class='updateCategoryStatus' href='javascript:void(O)'>Active</a>");
                 }
+            },error:function(){
+                alert("Error");
+            }
+        });
+    });
+
+    // Append Category Level
+    $('#section_id').change(function(){
+        var section_id = $(this).val();
+        $.ajax({
+            type: 'post',
+            url: '/admin/append-categories-level',
+            data: {section_id:section_id},
+            success:function(resp){
+                $("#appendCategoriesLevel").html(resp);
             },error:function(){
                 alert("Error");
             }
