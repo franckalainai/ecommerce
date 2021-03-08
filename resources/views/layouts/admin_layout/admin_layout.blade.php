@@ -107,6 +107,8 @@
 </script>
 <script src="{{ asset('plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
 <script src="{{ asset('plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<!-- Sweet Alert Script -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script>
     $(function () {
       $("#sections").DataTable({

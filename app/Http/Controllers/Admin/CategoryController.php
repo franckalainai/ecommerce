@@ -157,7 +157,7 @@ class CategoryController extends Controller
 
         // delete category image from categories table
         Category::where('id', $id)->update(['category_image' => '']);
-        return redirect()->back()->with('flash_message_success', 'l\'image de la categorie a été supprimée avec succès');
+        return redirect()->back()->with('success_message', 'l\'image de la categorie a été supprimée avec succès');
     }
 
     public function deleteCategory($id){

@@ -19,9 +19,9 @@
       </div><!-- /.container-fluid -->
     </section>
 
-    @if(Session::has('flash_message_success'))
+    @if(Session::has('success_message'))
         <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top:10px">
-            {{ Session::get('flash_message_success') }}
+            {{ Session::get('success_message') }}
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -99,7 +99,8 @@
                         @if(!empty($categoryData['category_image']))
                             <div>
                                 <img style="width: 80px; margin-top:5px;" src="{{ asset('images/category_images/'.$categoryData['category_image']) }}">
-                                &nbsp;<a href="{{ url('admin/delete-category-image/'.$categoryData['id']) }}">Delete Image</a>
+                                &nbsp; &nbsp;<a href="{{ url('admin/delete-category-image/'.$categoryData['id']) }}">Delete Image</a>
+                                {{--<a class="confirmDelete" href="javascript:void(0)" record="category-image" recordid="{{ $categoryData['id'] }}">Delete Image</a>--}}
                             </div>
                         @endif
                     </div>

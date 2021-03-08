@@ -72,4 +72,36 @@ $(document).ready(function(){
             }
         });
     });
+
+    /* Confirm Deletion of record
+    $(".confirmDelete").click(function(){
+        var name = $(this).attr("name");
+        if(confirm("Etes vous sure de vouloir supprimer " + name + " ?")){
+            return true;
+        }
+        return false;
+    });
+    */
+
+   // Confirm deletion with sweet alert
+   $(".confirmDelete").click(function(){
+        var record = $(this).attr("record");
+        var recordid = $(this).attr("recordid");
+        Swal.fire({
+            title: 'Etes-vous sûre de vouloir supprimer ?',
+            text: "Cette action est irreversible!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Annuler !',
+            confirmButtonText: 'Oui , supprimer !'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href="delete-"+ record + "/" + recordid;
+            }
+          });
+          return false;
+    });
+
 });
