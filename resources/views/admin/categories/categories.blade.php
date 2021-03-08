@@ -86,7 +86,11 @@
                             </a>
                         @endif
                     </td>
-                    <td><a href="{{ url('admin/add-edit-category/'.$category->id) }}">Edit</a></td>
+                    <td>
+                        <a href="{{ url('admin/add-edit-category/'.$category->id) }}">Edit</a>
+                        &nbsp;&nbsp;
+                        <a href="{{ url('admin/delete-category/'.$category->id) }}">Delete</a>
+                    </td>
                   </tr>
                   @endforeach
                   </tbody>

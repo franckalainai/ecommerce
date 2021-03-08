@@ -19,6 +19,15 @@
       </div><!-- /.container-fluid -->
     </section>
 
+    @if(Session::has('flash_message_success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" style="margin-top:10px">
+            {{ Session::get('flash_message_success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
     @if ($errors->any())
         <div class="alert alert-danger" style="margin-top: 10px">
             <ul>
@@ -78,15 +87,21 @@
                     <!-- /.form-group -->
                     <div class="form-group">
                         <label for="category_image">Image de la categorie</label>
-                        <div class="input-group">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="category_image"  name="category_image">
-                            <label class="custom-file-label" for="category_image">Choisir une image</label>
+                            <div class="input-group">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="category_image"  name="category_image">
+                                <label class="custom-file-label" for="category_image">Choisir une image</label>
+                            </div>
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="">Uploader</span>
+                            </div>
                         </div>
-                        <div class="input-group-append">
-                            <span class="input-group-text" id="">Uploader</span>
-                        </div>
-                        </div>
+                        @if(!empty($categoryData['category_image']))
+                            <div>
+                                <img style="width: 80px; margin-top:5px;" src="{{ asset('images/category_images/'.$categoryData['category_image']) }}">
+                                &nbsp;<a href="{{ url('admin/delete-category-image/'.$categoryData['id']) }}">Delete Image</a>
+                            </div>
+                        @endif
                     </div>
                     <!-- /.form-group -->
                 </div>
