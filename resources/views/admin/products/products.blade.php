@@ -37,7 +37,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Produits</h3>
-                <a href="{{ url('admin/add-edit-category') }}" class="btn btn-block btn btn-success" style="max-width: 150px; float: right; display:inline-block">Ajouter Produit</a>
+                <a href="{{ url('admin/add-edit-product') }}" class="btn btn-block btn btn-success" style="max-width: 150px; float: right; display:inline-block">Ajouter Produit</a>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -48,6 +48,8 @@
                     <th>Product Name</th>
                     <th>Product Code</th>
                     <th>Product Color</th>
+                    <th>Category</th>
+                    <th>Section</th>
                     <th>Status</th>
                     <th>Actions</th>
                   </tr>
@@ -59,6 +61,8 @@
                     <td>{{ $product->product_name }}</td>
                     <td>{{ $product->product_code }}</td>
                     <td>{{ $product->product_color }}</td>
+                    <td>{{ $product->category->category_name }}</td>
+                    <td>{{ $product->section->name }}</td>
                     <td>
                         @if($product->status == 1)
                             <a
