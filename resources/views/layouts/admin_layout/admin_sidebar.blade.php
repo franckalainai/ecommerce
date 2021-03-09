@@ -111,6 +111,17 @@
                   <p>Categories</p>
                 </a>
               </li>
+              @if(Session::get('page')=="products")
+                <?php $active = "active"; ?>
+                @else
+                <?php $active = ""; ?>
+              @endif
+              <li class="nav-item">
+                <a href="{{ url('admin/products')}}" class="nav-link {{ $active }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Produits</p>
+                </a>
+              </li>
             </ul>
           </li>
         </ul>

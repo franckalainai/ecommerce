@@ -119,6 +119,10 @@
         "responsive": true,
         "autoWidth": false,
       });
+      $("#products").DataTable({
+        "responsive": true,
+        "autoWidth": false,
+      });
     });
   </script>
 </body>

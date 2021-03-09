@@ -34,14 +34,14 @@ class CategoryController extends Controller
 
     public function addEditCategory(Request $request, $id=null){
         if($id == null){
-            $title = "Add Category";
+            $title = "Ajouter catégorie";
             // Add New Category Functionality
             $category = new Category;
             $categoryData = array();
             $getCategories = array();
             $message = "categorie crée avec succès";
         }else{
-            $title = "Edit Category";
+            $title = "Modifier catéhorie";
             // Edit Category Functionality
             $categoryData = Category::where('id', $id)->first();
             $getCategories = Category::with('subcategories')->where(['parent_id' => 0, 'section_id' => $categoryData['section_id']])->get();
